@@ -180,7 +180,6 @@ namespace Game
             Form1 mainForm = new Form1(player);
             this.Hide();
             mainForm.UpdateStats();
-            mainForm.UpdateEvent();
             mainForm.ShowDialog();
         }
     }

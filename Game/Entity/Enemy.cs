@@ -31,12 +31,12 @@ namespace Game.Entity
         {
             if (player.defence == true)
             {
-                player.Health -= Attack/2;
+                player.combatHealth -= Attack/2;
                 player.defence = false;
             }
             else 
             {
-                player.Health -= Attack;
+                player.combatHealth -= Attack;
             }
             MessageBox.Show("Ворог атакує.");
         }

@@ -28,25 +28,21 @@ namespace Game.Game
                     MessageBox.Show("Бій!");
                     combatForm.ShowDialog();
                     form1.UpdateStats();
-                    form1.UpdateEvent();
                     break;
                 case 2:
                     MessageBox.Show("Нічого не сталося.");
                     form1.UpdateStats();
                     form1.ShowDialog();
-                    form1.UpdateEvent();
                     break;
                 case 3:
                     Event(number2);
                     form1.UpdateStats();
                     form1.ShowDialog();
-                    form1.UpdateEvent();
                     break;
                 case 4:
-                    form1.UpdateStats();
-                    form1.UpdateEvent();
-                    shopForm.ShowDialog();
                     MessageBox.Show("Ви можете закупитися.");
+                    form1.UpdateStats();
+                    shopForm.ShowDialog();
                     break;
             }
         }

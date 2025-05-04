@@ -35,7 +35,7 @@ namespace Game
         {
             if (player.combatMana >= 10)
             {
-                enemy.Health -= player.PlayerAttack();
+                enemy.Health -= player.damage;
                 player.Strength = orgStrength;
                 UpdateStats();
                 if (enemy.Health > 0)
@@ -53,7 +53,7 @@ namespace Game
         {
             if (player.combatMana >= 20)
             {
-                enemy.Health -= player.PlayerPowerAttack();
+                enemy.Health -= player.damage;
                 player.Strength = orgStrength;
                 UpdateStats();
                 if (enemy.Health > 0)
@@ -198,7 +198,6 @@ namespace Game
                 progressBar1.Value = 0;
                 this.Hide();
                 mainForm.UpdateStats();
-                form1.UpdateEvent();
                 mainForm.ShowDialog();
             }
             if (enemy.Health <= 0)
@@ -210,7 +209,6 @@ namespace Game
                 player.AddExperience(enemy.RewardXP);
                 this.Hide();
                 mainForm.UpdateStats();
-                form1.UpdateEvent();
                 mainForm.ShowDialog();
             }
             if (player.combatHealth >= player.maxcombatHealth)

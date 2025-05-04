@@ -29,18 +29,21 @@ namespace Game
             InitializeComponent();
             pictureBox2.Image = Image.FromFile(@"../../Image/HomeBackground.jpg");
             pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
+            player.UpdateStats();
             UpdateStatus();
             UpdateStats();
         }
         public void button1_Click(object sender, EventArgs e)
         {
-           
+            int number1 = random.Next(1, 5);
+            int number2 = random.Next(1, 11);
             Enemy enemy = new Enemy(player);
             GameEvent gameEvent = new GameEvent(player, enemy);
             this.Hide();
-            UpdateEvent();
+            UpdateEvent(number1, number2);
             gameEvent.DoEvent(number1, number2);
             UpdateStats();
+            UpdateEvent(number1, number2);
         }
         public void button3_Click(object sender, EventArgs e)
         {
@@ -139,10 +142,8 @@ namespace Game
             label50.Text = player.accessory.ManaBonusAccessory.ToString();
 
         }
-        public void UpdateEvent()
+        public void UpdateEvent(int number1, int number2)
         {
-            int number1 = random.Next(1, 5);
-            int number2 = random.Next(1, 11);
             switch (number1)
             {
                 case 1:

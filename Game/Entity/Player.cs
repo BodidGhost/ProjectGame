@@ -74,6 +74,18 @@ namespace Game.Entity
             maxcombatMana = combatMana;
 
         }
+        public void UpdateStats()
+        {
+            CriticalChance = Agility * 0.005;
+            MaxHealth = Endurance * 5;
+            Health = MaxHealth;
+            MaxMana = Intelligence * 5;
+            Mana = MaxMana;
+            combatHealth = Health + armor.DefenseBonusArmor;
+            combatMana = Mana + accessory.ManaBonusAccessory;
+            maxcombatHealth = combatHealth;
+            maxcombatMana = combatMana;
+        }
 
         public int PlayerAttack()
         {
