@@ -19,7 +19,7 @@ namespace Game
         {
 
             InitializeComponent();
-            pictureBox2.Image = Image.FromFile("Image/HomeBackground.jpg");
+            pictureBox2.Image = Image.FromFile(@"../../Image/HomeBackground.jpg");
             pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
             comboBox1.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
 
@@ -74,42 +74,42 @@ namespace Game
             switch (comboBox1.SelectedIndex + 1)
             {
                 case 1:
-                    pictureBox1.Image = Image.FromFile("Image/voin.jpg");
+                    pictureBox1.Image = Image.FromFile(@"../../Image/voin.jpg");
                     player.Strength = 6;
                     player.Endurance = 10;
                     player.Agility = 10;
                     player.Intelligence = 8;
                     break;
                 case 2:
-                    pictureBox1.Image = Image.FromFile("Image/knight.jpg");
+                    pictureBox1.Image = Image.FromFile(@"../../Image/knight.jpg");
                     player.Strength = 7;
                     player.Endurance = 15;
                     player.Agility = 10;
                     player.Intelligence = 10;
                     break;
                 case 3:
-                    pictureBox1.Image = Image.FromFile("Image/robber.jpg");
+                    pictureBox1.Image = Image.FromFile(@"../../Image/robber.jpg");
                     player.Strength = 9;
                     player.Endurance = 10;
                     player.Agility = 15;
                     player.Intelligence = 5;
                     break;
                 case 4:
-                    pictureBox1.Image = Image.FromFile("Image/bowman.png");
+                    pictureBox1.Image = Image.FromFile(@"../../Image/bowman.png");
                     player.Strength = 6;
                     player.Endurance = 15;
                     player.Agility = 15;
                     player.Intelligence = 10;
                     break;
                 case 5:
-                    pictureBox1.Image = Image.FromFile("Image/mage.jpg");
+                    pictureBox1.Image = Image.FromFile(@"../../Image/mage.jpg");
                     player.Strength = 7;
                     player.Endurance = 12;
                     player.Agility = 10;
                     player.Intelligence = 20;
                     break;
                 case 6:
-                    pictureBox1.Image = Image.FromFile("Image/assassin.jpg");
+                    pictureBox1.Image = Image.FromFile(@"../../Image/assassin.jpg");
                     player.Strength = 4;
                     player.Endurance = 10;
                     player.Agility = 50;

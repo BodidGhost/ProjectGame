@@ -107,22 +107,22 @@ namespace Game
             switch (player.Playerstatus)
             {
                 case 1:
-                    pictureBox1.Image = System.Drawing.Image.FromFile("Image/voin.jpg");
+                    pictureBox1.Image = System.Drawing.Image.FromFile(@"../../Image/voin.jpg");
                     break;
                 case 2:
-                    pictureBox1.Image = System.Drawing.Image.FromFile("Image/knight.jpg");
+                    pictureBox1.Image = System.Drawing.Image.FromFile(@"../../Image/knight.jpg");
                     break;
                 case 3:
-                    pictureBox1.Image = System.Drawing.Image.FromFile("Image/robber.jpg");
+                    pictureBox1.Image = System.Drawing.Image.FromFile(@"../../Image/robber.jpg");
                     break;
                 case 4:
-                    pictureBox1.Image = System.Drawing.Image.FromFile("Image/bowman.png");
+                    pictureBox1.Image = System.Drawing.Image.FromFile(@"../../Image/bowman.png");
                     break;
                 case 5:
-                    pictureBox1.Image = System.Drawing.Image.FromFile("Image/mage.jpg");
+                    pictureBox1.Image = System.Drawing.Image.FromFile(@"../../Image/mage.jpg");
                     break;
                 case 6:
-                    pictureBox1.Image = System.Drawing.Image.FromFile("Image/assassin.jpg");
+                    pictureBox1.Image = System.Drawing.Image.FromFile(@"../../Image/assassin.jpg");
                     break;
 
             }
@@ -134,26 +134,26 @@ namespace Game
             switch (random.Next(1, 3))
             {
                 case 1:
-                    pictureBox2.Image = System.Drawing.Image.FromFile("Image/FightBackground.jpg");
+                    pictureBox2.Image = System.Drawing.Image.FromFile(@"../../Image/FightBackground.jpg");
                     switch (random.Next(1, 3))
                     {
                         case 1:
-                            pictureBox3.Image = System.Drawing.Image.FromFile("Image/Enemy3.jpg");
+                            pictureBox3.Image = System.Drawing.Image.FromFile(@"../../Image/Enemy3.jpg");
                             break;
                         case 2:
-                            pictureBox3.Image = System.Drawing.Image.FromFile("Image/Enemy4.jpg");
+                            pictureBox3.Image = System.Drawing.Image.FromFile(@"../../Image/Enemy4.jpg");
                             break;
                     }
                     break;
                 case 2:
-                    pictureBox2.Image = System.Drawing.Image.FromFile("Image/FightBackground2.png");
+                    pictureBox2.Image = System.Drawing.Image.FromFile(@"../../Image/FightBackground2.png");
                     switch (random.Next(1, 3))
                     {
                         case 1:
-                            pictureBox3.Image = System.Drawing.Image.FromFile("Image/Enemy1.jpg");
+                            pictureBox3.Image = System.Drawing.Image.FromFile(@"../../Image/Enemy1.jpg");
                             break;
                         case 2:
-                            pictureBox3.Image = System.Drawing.Image.FromFile("Image/Enemy2.jpg");
+                            pictureBox3.Image = System.Drawing.Image.FromFile(@"../../Image/Enemy2.jpg");
                             break;
                     }
                     break;

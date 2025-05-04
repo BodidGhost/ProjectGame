@@ -17,7 +17,7 @@ namespace Game
         {
 
             InitializeComponent();
-            pictureBox1.Image = Image.FromFile("Image/MenuBackground.jpg");
+            pictureBox1.Image = Image.FromFile(@"../../Image/MenuBackground.jpg");
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
         }
         public void button1_Click(object sender, EventArgs e)

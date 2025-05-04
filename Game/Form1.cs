@@ -27,7 +27,7 @@ namespace Game
         {
             this.player = player;
             InitializeComponent();
-            pictureBox2.Image = Image.FromFile("Image/HomeBackground.jpg");
+            pictureBox2.Image = Image.FromFile(@"../../Image/HomeBackground.jpg");
             pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
             UpdateStatus();
             UpdateStats();
@@ -59,27 +59,27 @@ namespace Game
             switch (player.Playerstatus)
             {
                 case 1:
-                    pictureBox1.Image = Image.FromFile("Image/voin.jpg");
+                    pictureBox1.Image = Image.FromFile(@"../../Image/voin.jpg");
                     labelClass.Text = "Воїн";
                     break;
                 case 2:
-                    pictureBox1.Image = Image.FromFile("Image/knight.jpg");
+                    pictureBox1.Image = Image.FromFile(@"../../Image/knight.jpg");
                     labelClass.Text = "Лицар"; 
                     break;
                 case 3:
-                    pictureBox1.Image = Image.FromFile("Image/robber.jpg");
+                    pictureBox1.Image = Image.FromFile(@"../../Image/robber.jpg");
                     labelClass.Text = "Розбійник";
                     break;
                 case 4:
-                    pictureBox1.Image = Image.FromFile("Image/bowman.png");
+                    pictureBox1.Image = Image.FromFile(@"../../Image/bowman.png");
                     labelClass.Text = "Лучник";
                     break;
                 case 5:
-                    pictureBox1.Image = Image.FromFile("Image/mage.jpg");
+                    pictureBox1.Image = Image.FromFile(@"../../Image/mage.jpg");
                     labelClass.Text = "Маг";
                     break;
                 case 6:
-                    pictureBox1.Image = Image.FromFile("Image/assassin.jpg");
+                    pictureBox1.Image = Image.FromFile(@"../../Image/assassin.jpg");
                     labelClass.Text = "Ассасін";
                     break;
 
