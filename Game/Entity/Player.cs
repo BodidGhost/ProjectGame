@@ -86,8 +86,7 @@ namespace Game.Entity
             maxcombatHealth = combatHealth;
             maxcombatMana = combatMana;
         }
-
-        public int PlayerAttack()
+        public void PlayerAttack(Enemy enemy)
         {
             combatMana -= 10;
             Random random = new Random();
@@ -100,9 +99,9 @@ namespace Game.Entity
             {
                 damage *= 3;
             }
-            return damage;
+            enemy.Health -= damage;
         }
-        public int PlayerPowerAttack()
+        public void PlayerPowerAttack(Enemy enemy)
         {
             combatMana -= 20;
             Random random = new Random();
@@ -115,12 +114,12 @@ namespace Game.Entity
             {
                 damage *= 3;
             }
-            return damage;
+            enemy.Health -= damage;
         }
         public void PlayerHeal()
         {
             combatMana -= 10;
-            Health += MaxHealth;
+            combatHealth = maxcombatHealth;
             MessageBox.Show("Гравець лікувався.");
         }
         public void PlayerDefence()

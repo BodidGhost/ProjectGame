@@ -19,7 +19,6 @@ namespace Game.Game
         }
         public void DoEvent(int number1, int number2)
         {
-            Form1 form1 = new Form1(player);
             CombatForm combatForm = new CombatForm(player, enemy);
             ShopForm shopForm = new ShopForm(player);
             switch (number1)
@@ -27,21 +26,15 @@ namespace Game.Game
                 case 1:
                     MessageBox.Show("Бій!");
                     combatForm.ShowDialog();
-                    form1.UpdateStats();
                     break;
                 case 2:
                     MessageBox.Show("Нічого не сталося.");
-                    form1.UpdateStats();
-                    form1.ShowDialog();
                     break;
                 case 3:
                     Event(number2);
-                    form1.UpdateStats();
-                    form1.ShowDialog();
                     break;
                 case 4:
                     MessageBox.Show("Ви можете закупитися.");
-                    form1.UpdateStats();
                     shopForm.ShowDialog();
                     break;
             }

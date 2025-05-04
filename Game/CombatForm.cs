@@ -35,8 +35,7 @@ namespace Game
         {
             if (player.combatMana >= 10)
             {
-                enemy.Health -= player.damage;
-                player.Strength = orgStrength;
+                player.PlayerAttack(enemy);
                 UpdateStats();
                 if (enemy.Health > 0)
                 {
@@ -53,8 +52,7 @@ namespace Game
         {
             if (player.combatMana >= 20)
             {
-                enemy.Health -= player.damage;
-                player.Strength = orgStrength;
+                player.PlayerPowerAttack(enemy);
                 UpdateStats();
                 if (enemy.Health > 0)
                 {
@@ -97,7 +95,7 @@ namespace Game
         }
         private void button5_Click(object sender, EventArgs e)
         {
-            player.combatMana = player.MaxMana;
+            player.combatMana = player.maxcombatMana;
             UpdateStats();
             DoEnemy();
             UpdateStats();
@@ -163,7 +161,6 @@ namespace Game
         }
         public void UpdateStats()
         {
-            Form1 form1 = new Form1(player);
             if (player.combatHealth < 0)
             {
                 player.combatHealth = 0;
@@ -188,29 +185,6 @@ namespace Game
             progressBar1.Minimum = minValue;
             progressBar2.Minimum = minValue;
             progressBar3.Minimum = minValue;
-            Form1 mainForm = new Form1(player);
-
-            if (player.Health <= 0)
-            {
-                MessageBox.Show("Ви програли.");
-                player.losses += 1;
-                player.combatHealth = 0;
-                progressBar1.Value = 0;
-                this.Hide();
-                mainForm.UpdateStats();
-                mainForm.ShowDialog();
-            }
-            if (enemy.Health <= 0)
-            {
-                MessageBox.Show("Ви Перемогли.");
-                player.wins += 1;
-                progressBar3.Value = 0;
-                player.Gold += enemy.RewardGold;
-                player.AddExperience(enemy.RewardXP);
-                this.Hide();
-                mainForm.UpdateStats();
-                mainForm.ShowDialog();
-            }
             if (player.combatHealth >= player.maxcombatHealth)
             {
                 progressBar1.Value = player.maxcombatHealth;
@@ -234,6 +208,23 @@ namespace Game
             else
             {
                 progressBar3.Value = enemy.Health;
+            }
+            if (player.Health <= 0)
+            {
+                MessageBox.Show("Ви програли.");
+                player.losses += 1;
+                player.combatHealth = 0;
+                progressBar1.Value = 0;
+                this.Hide();
+            }
+            if (enemy.Health <= 0)
+            {
+                MessageBox.Show("Ви Перемогли.");
+                player.wins += 1;
+                progressBar3.Value = 0;
+                player.Gold += enemy.RewardGold;
+                player.AddExperience(enemy.RewardXP);
+                this.Hide();
             }
         }
         public void DoEnemy()

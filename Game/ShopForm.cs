@@ -25,28 +25,27 @@ namespace Game
             InitializeComponent();
             Random random = new Random();
             number = random.Next(1 , 4);
+            label8.Text = player.Gold.ToString();
             UpdateItem();
         }
         private void button1_Click(object sender, EventArgs e)
         {
-            Form1 mainForm = new Form1(player);
             ShopItemGenerator shopItemGenerator = new ShopItemGenerator(player);
             shopItemGenerator.BuyItem(number, comboBox1.SelectedIndex + 1);
-            mainForm.UpdateStats();
+            this.Hide();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Form1 mainForm = new Form1(player);
             ShopItemGenerator shopItemGenerator = new ShopItemGenerator(player);
             shopItemGenerator.SellItem(number);
             label8.Text = player.Gold.ToString();
-            mainForm.UpdateStats();
+            UpdateItem();
         }
         public void UpdateItem()
         {
             switch (number)
-            { 
+            {
                 case 1:
                     comboBox1.Items.Clear();
                     comboBox1.Items.Add("Початковий вірень зброї(+ 2 урону)");
@@ -76,12 +75,12 @@ namespace Game
                             label4.Text = "Легендарний вірень зброї(+ 20 урону)";
                             label6.Text = "250";
                             break;
-                        case 6:
-                            label4.Text = "Немає зброї";
+                        case 0:
+                            label4.Text = "Звичайна зброя";
                             label6.Text = "0";
                             break;
                     }
-                break;
+                    break;
                 case 2:
                     comboBox1.Items.Clear();
                     comboBox1.Items.Add("Початковий вірень броні(+ 100 здоров'я)");
@@ -111,8 +110,8 @@ namespace Game
                             label4.Text = "Легендарний вірень броні(+ 1000 здоров'я)";
                             label6.Text = "250";
                             break;
-                        case 6:
-                            label4.Text = "Немає броні";
+                        case 0:
+                            label4.Text = "Звичайна броня";
                             label6.Text = "0";
                             break;
                     }
@@ -146,15 +145,22 @@ namespace Game
                             label4.Text = "Легендарний вірень аксесуара(+ 1000 мани)";
                             label6.Text = "250";
                             break;
-                        case 6:
-                            label4.Text = "Немає аксесуара";
+                        case 0:
+                            label4.Text = "Звичайний аксесуар";
                             label6.Text = "0";
                             break;
                     }
                     break;
+                }
 
             }
-            label8.Text = player.Gold.ToString();
+        private void button3_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+        }
+
+        private void comboBox1_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
             switch (comboBox1.SelectedIndex + 1)
             {
                 case 1:
@@ -173,14 +179,6 @@ namespace Game
                     label11.Text = "1200 золота";
                     break;
             }
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            Form1 mainForm = new Form1(player);
-            this.Hide();
-            mainForm.UpdateStats();
-            mainForm.ShowDialog();
         }
     }
 }

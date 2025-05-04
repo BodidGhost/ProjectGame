@@ -39,11 +39,10 @@ namespace Game
             int number2 = random.Next(1, 11);
             Enemy enemy = new Enemy(player);
             GameEvent gameEvent = new GameEvent(player, enemy);
-            this.Hide();
-            UpdateEvent(number1, number2);
             gameEvent.DoEvent(number1, number2);
             UpdateStats();
             UpdateEvent(number1, number2);
+            player.UpdateStats();
         }
         public void button3_Click(object sender, EventArgs e)
         {
@@ -91,24 +90,6 @@ namespace Game
         }
         public void UpdateStats()
         {
-            if (player.Health > player.MaxHealth)
-            {
-                player.Health = player.MaxHealth;
-                progressBar1.Value = player.MaxHealth;
-            }
-            else
-            {
-                progressBar1.Value = player.Health;
-            }
-            if (player.Mana > player.MaxMana)
-            {
-                player.Mana = player.MaxMana;
-                progressBar2.Value = player.MaxMana;
-            }
-            else
-            {
-                progressBar2.Value = player.Mana;
-            }
             label6.Text = player.Level.ToString();
             label7.Text = player.LevelCup.ToString();
             label10.Text = player.Health.ToString();
@@ -140,7 +121,24 @@ namespace Game
             label52.Text = player.armor.DefenseBonusArmor.ToString();
             label51.Text = player.accessory.NameAccessory.ToString();
             label50.Text = player.accessory.ManaBonusAccessory.ToString();
-
+            if (player.Health > player.MaxHealth)
+            {
+                player.Health = player.MaxHealth;
+                progressBar1.Value = player.MaxHealth;
+            }
+            else
+            {
+                progressBar1.Value = player.Health;
+            }
+            if (player.Mana > player.MaxMana)
+            {
+                player.Mana = player.MaxMana;
+                progressBar2.Value = player.MaxMana;
+            }
+            else
+            {
+                progressBar2.Value = player.Mana;
+            }
         }
         public void UpdateEvent(int number1, int number2)
         {
