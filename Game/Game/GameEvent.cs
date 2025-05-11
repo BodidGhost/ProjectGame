@@ -72,16 +72,8 @@ namespace Game.Game
                     MessageBox.Show("Ви поновили ману.");
                     break;
                 case 8:
-                    if (player.Health >= 5)
-                    {
-                        player.Health = 0;
-                        Application.Exit();
-                    }
-                    else
-                    {
-                        player.Health -= 5;
-                        MessageBox.Show("У вас відняли 5 здоров'я.");
-                    }
+                    player.Health -= 5;
+                    MessageBox.Show("У вас відняли 5 здоров'я.");
                     break;
                 case 9:
                     if (player.Gold < 100)

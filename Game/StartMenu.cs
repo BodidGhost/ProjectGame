@@ -22,7 +22,7 @@ namespace Game
         }
         public void button1_Click(object sender, EventArgs e)
         {
-            CreatePlayerForm  createPlayer = new CreatePlayerForm();
+            CreatePlayerForm createPlayer = new CreatePlayerForm();
             this.Hide();
             createPlayer.ShowDialog();
         }

@@ -21,8 +21,6 @@ namespace Game
         Random random = new Random();
         public Player player;
         public Enemy enemy;
-        int number1;
-        int number2;
         public Form1(Player player)
         {
             this.player = player;
@@ -30,6 +28,8 @@ namespace Game
             pictureBox2.Image = Image.FromFile(@"../../Image/HomeBackground.jpg");
             pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
             player.UpdateStats();
+            player.Health = player.MaxHealth;
+            player.Mana = player.MaxMana;
             UpdateStatus();
             UpdateStats();
         }
@@ -40,9 +40,10 @@ namespace Game
             Enemy enemy = new Enemy(player);
             GameEvent gameEvent = new GameEvent(player, enemy);
             gameEvent.DoEvent(number1, number2);
-            UpdateStats();
+            player.UpdateStats();
             UpdateEvent(number1, number2);
             player.UpdateStats();
+            UpdateStats();
         }
         public void button3_Click(object sender, EventArgs e)
         {
@@ -52,8 +53,8 @@ namespace Game
         public void button4_Click(object sender, EventArgs e)
         {
             StartMenu startMenu = new StartMenu();
-            this.Hide();
             startMenu.ShowDialog();
+            this.Close();
         }
         public void UpdateStatus()
         {
@@ -138,6 +139,11 @@ namespace Game
             else
             {
                 progressBar2.Value = player.Mana;
+            }
+            if (player.Health <= 0)
+            {
+                MessageBox.Show("Ви програли!");
+                Application.Exit();
             }
         }
         public void UpdateEvent(int number1, int number2)

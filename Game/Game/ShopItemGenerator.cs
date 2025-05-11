@@ -20,8 +20,6 @@ namespace Game.Game
         }
         public void BuyItem(int random, int index)
         {
-            Form1 mainForm = new Form1(player);
-            ShopForm shopForm = new ShopForm(player);
             switch (random)
                 {
                     case 1:
@@ -35,9 +33,6 @@ namespace Game.Game
                                     player.weapon.IndexWeapon = 1;
                                     player.Gold -= 100;
                                     player.purchases += 1;
-                                    shopForm.Hide();
-                                    mainForm.UpdateStats();
-                                    mainForm.ShowDialog();
                             }
                                 else
                                 {
@@ -52,9 +47,6 @@ namespace Game.Game
                                     player.weapon.IndexWeapon = 2;
                                     player.Gold -= 300;
                                     player.purchases += 1;
-                                    shopForm.Hide();
-                                    mainForm.UpdateStats();
-                                    mainForm.ShowDialog();
                                 }
                                 else
                                 {
@@ -69,9 +61,6 @@ namespace Game.Game
                                     player.weapon.IndexWeapon = 3;
                                     player.Gold -= 500;
                                     player.purchases += 1;
-                                    shopForm.Hide();
-                                    mainForm.UpdateStats();
-                                    mainForm.ShowDialog();
                                 }
                                 else
                                 {
@@ -86,9 +75,6 @@ namespace Game.Game
                                     player.weapon.IndexWeapon = 4;
                                     player.Gold -= 800;
                                     player.purchases += 1;
-                                    shopForm.Hide();
-                                    mainForm.UpdateStats();
-                                    mainForm.ShowDialog();
                                 }
                                 else
                                 {
@@ -103,9 +89,6 @@ namespace Game.Game
                                     player.weapon.IndexWeapon = 5;
                                     player.Gold -= 1200;
                                     player.purchases += 1;
-                                    shopForm.Hide();
-                                    mainForm.UpdateStats();
-                                    mainForm.ShowDialog();
                                 }
                                 else
                                 {
@@ -125,9 +108,6 @@ namespace Game.Game
                                 player.armor.IndexArmor = 1;
                                 player.Gold -= 100;
                                 player.purchases += 1;
-                                shopForm.Hide();
-                                mainForm.UpdateStats();
-                                mainForm.ShowDialog();
                             }
                             else
                             {
@@ -142,9 +122,6 @@ namespace Game.Game
                                 player.armor.IndexArmor = 2;
                                 player.Gold -= 300;
                                 player.purchases += 1;
-                                shopForm.Hide();
-                                mainForm.UpdateStats();
-                                mainForm.ShowDialog();
                             }
                             else
                             {
@@ -159,9 +136,6 @@ namespace Game.Game
                                 player.armor.IndexArmor = 3;
                                 player.Gold -= 500;
                                 player.purchases += 1;
-                                shopForm.Hide();
-                                mainForm.UpdateStats();
-                                mainForm.ShowDialog();
                             }
                             else
                             {
@@ -176,9 +150,6 @@ namespace Game.Game
                                 player.armor.IndexArmor = 4;
                                 player.Gold -= 800;
                                 player.purchases += 1;
-                                shopForm.Hide();
-                                mainForm.UpdateStats();
-                                mainForm.ShowDialog();
                             }
                             else
                             {
@@ -193,9 +164,6 @@ namespace Game.Game
                                 player.armor.IndexArmor = 5;
                                 player.Gold -= 1200;
                                 player.purchases += 1;
-                                shopForm.Hide();
-                                mainForm.UpdateStats();
-                                mainForm.ShowDialog();
                             }
                             else
                             {
@@ -215,9 +183,6 @@ namespace Game.Game
                                 player.accessory.IndexAccessory = 1;
                                 player.Gold -= 100;
                                 player.purchases += 1;
-                                shopForm.Hide();
-                                mainForm.UpdateStats();
-                                mainForm.ShowDialog();
                             }
                             else
                             {
@@ -232,9 +197,6 @@ namespace Game.Game
                                 player.accessory.IndexAccessory = 2;
                                 player.Gold -= 300;
                                 player.purchases += 1;
-                                shopForm.Hide();
-                                mainForm.UpdateStats();
-                                mainForm.ShowDialog();
                             }
                             else
                             {
@@ -249,9 +211,6 @@ namespace Game.Game
                                 player.accessory.IndexAccessory = 3;
                                 player.Gold -= 500;
                                 player.purchases += 1;
-                                shopForm.Hide();
-                                mainForm.UpdateStats();
-                                mainForm.ShowDialog();
                             }
                             else
                             {
@@ -266,9 +225,6 @@ namespace Game.Game
                                 player.accessory.IndexAccessory = 4;
                                 player.Gold -= 800;
                                 player.purchases += 1;
-                                shopForm.Hide();
-                                mainForm.UpdateStats();
-                                mainForm.ShowDialog();
                             }
                             else
                             {
@@ -283,9 +239,6 @@ namespace Game.Game
                                 player.accessory.IndexAccessory = 5;
                                 player.Gold -= 1200;
                                 player.purchases += 1;
-                                shopForm.Hide();
-                                mainForm.UpdateStats();
-                                mainForm.ShowDialog();
                             }
                             else
                             {

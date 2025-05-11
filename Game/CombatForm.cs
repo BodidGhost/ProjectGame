@@ -26,6 +26,7 @@ namespace Game
             this.player = player;
             this.enemy = enemy;
             InitializeComponent();
+            player.UpdateStats();
             UpdateStatus();
             UpdateEnemy();
             UpdateStats();
@@ -33,9 +34,9 @@ namespace Game
         }
         public void button1_Click(object sender, EventArgs e)
         {
-            if (player.combatMana >= 10)
+            if (player.Mana >= 10)
             {
-                player.PlayerAttack(enemy);
+                player.PlayerAttack(enemy, 10, 1);
                 UpdateStats();
                 if (enemy.Health > 0)
                 {
@@ -50,9 +51,9 @@ namespace Game
         }
         public void button2_Click(object sender, EventArgs e)
         {
-            if (player.combatMana >= 20)
+            if (player.Mana >= 20)
             {
-                player.PlayerPowerAttack(enemy);
+                player.PlayerAttack(enemy, 20, 2);
                 UpdateStats();
                 if (enemy.Health > 0)
                 {
@@ -67,7 +68,7 @@ namespace Game
         }
         public void button3_Click(object sender, EventArgs e)
         {
-            if (player.combatMana >= 5)
+            if (player.Mana >= 5)
             {
                 player.PlayerDefence();
                 UpdateStats();
@@ -81,7 +82,7 @@ namespace Game
         }
         public void button4_Click(object sender, EventArgs e)
         {
-            if (player.combatMana >= 10)
+            if (player.Mana >= 10)
             {
                 player.PlayerHeal();
                 UpdateStats();
@@ -95,7 +96,7 @@ namespace Game
         }
         private void button5_Click(object sender, EventArgs e)
         {
-            player.combatMana = player.maxcombatMana;
+            player.PlayerMeditation();
             UpdateStats();
             DoEnemy();
             UpdateStats();
@@ -161,45 +162,45 @@ namespace Game
         }
         public void UpdateStats()
         {
-            if (player.combatHealth < 0)
+            if (player.Health < 0)
             {
-                player.combatHealth = 0;
+                player.Health = 0;
             }
-            if (player.combatMana < 0)
+            if (player.Mana < 0)
             {
-                player.combatMana = 0;
+                player.Mana = 0;
             }
             if (enemy.Health < 0)
             {
                 enemy.Health = 0;
             }
-            label10.Text = player.combatHealth.ToString();
-            label13.Text = player.maxcombatHealth.ToString();
-            label16.Text = player.combatMana.ToString();
-            label14.Text = player.maxcombatMana.ToString();
+            label10.Text = player.Health.ToString();
+            label13.Text = player.MaxHealth.ToString();
+            label16.Text = player.Mana.ToString();
+            label14.Text = player.MaxMana.ToString();
             label3.Text = enemy.Health.ToString();
             label1.Text = enemy.MaxHealth.ToString();
-            progressBar1.Maximum = player.maxcombatHealth;
-            progressBar2.Maximum = player.maxcombatMana;
+            progressBar1.Maximum = player.MaxHealth;
+            progressBar2.Maximum = player.MaxMana;
             progressBar3.Maximum = enemy.MaxHealth;
             progressBar1.Minimum = minValue;
             progressBar2.Minimum = minValue;
             progressBar3.Minimum = minValue;
-            if (player.combatHealth >= player.maxcombatHealth)
+            if (player.Health >= player.MaxHealth)
             {
-                progressBar1.Value = player.maxcombatHealth;
+                progressBar1.Value = player.MaxHealth;
             }
             else
             {
-                progressBar1.Value = player.combatHealth;
+                progressBar1.Value = player.Health;
             }
-            if (player.combatMana >= player.maxcombatMana)
+            if (player.Mana >= player.MaxMana)
             {
-                progressBar2.Value = player.maxcombatMana;
+                progressBar2.Value = player.Mana;
             }
             else
             {
-                progressBar2.Value = player.combatMana;
+                progressBar2.Value = player.Mana;
             }
             if (enemy.Health > enemy.MaxHealth)
             {
@@ -211,11 +212,10 @@ namespace Game
             }
             if (player.Health <= 0)
             {
-                MessageBox.Show("Ви програли.");
                 player.losses += 1;
-                player.combatHealth = 0;
+                player.Health = 0;
                 progressBar1.Value = 0;
-                this.Hide();
+                this.Close();
             }
             if (enemy.Health <= 0)
             {
@@ -224,7 +224,7 @@ namespace Game
                 progressBar3.Value = 0;
                 player.Gold += enemy.RewardGold;
                 player.AddExperience(enemy.RewardXP);
-                this.Hide();
+                this.Close();
             }
         }
         public void DoEnemy()

@@ -54,15 +54,9 @@ namespace Game
             player.armor.DefenseBonusArmor = 0;
             player.accessory.IndexAccessory = 0;
             player.accessory.ManaBonusAccessory = 0;
+            this.Hide();
             Form1 mainForm = new Form1(player);
-            this.Hide();
             mainForm.ShowDialog();
-        }
-        public void button2_Click(object sender, EventArgs e)
-        {
-            StartMenu startMenu = new StartMenu();
-            this.Hide();
-            startMenu.ShowDialog();
         }
         public void updatePhoto(Player player)
         {

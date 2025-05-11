@@ -21,8 +21,8 @@ namespace Game.Entity
         {
             this.player = player;
             Level = player.Level;
-            Attack = 3 + Level * 2;
-            MaxHealth = 10 * Level;
+            Attack = 6 + Level * 2;
+            MaxHealth = 15 * Level;
             Health = MaxHealth;
             RewardGold = Level * 250;
             RewardXP = Level * 350;
@@ -31,12 +31,12 @@ namespace Game.Entity
         {
             if (player.defence == true)
             {
-                player.combatHealth -= Attack/2;
+                player.Health -= Attack/2;
                 player.defence = false;
             }
             else 
             {
-                player.combatHealth -= Attack;
+                player.Health -= Attack;
             }
             MessageBox.Show("Ворог атакує.");
         }

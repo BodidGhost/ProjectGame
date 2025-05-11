@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -10,12 +11,14 @@ namespace Game.Entity
     public class Player
     {
         public string Name;
-        public int Playerstatus; // 1-Воїн, 2-Лицар, 3-Лучник, 4-Розбійник, 5-Маг, 6-Асасін
+        public int Playerstatus;
+        // Все до Level
         public int Level;
         public int LevelCup;
         public int Experience;
         public int MaxExperience;
-        public int EXtoNextLevel;
+        public int amount;
+        // Все до характеристик
         public int Strength;
         public int Endurance;
         public int Agility;
@@ -24,19 +27,17 @@ namespace Game.Entity
         public int MaxHealth;
         public int Mana;
         public int MaxMana;
-        public int Gold;
         public double CriticalChance;
+        // Все д статистики
+        public int Gold;
         public int purchases;
         public int sales;
         public int wins;
         public int losses;
+        // Все до бою
         public bool defence;
         public int defenceHealth;
         public int damage;
-        public int combatHealth;
-        public int combatMana;
-        public int maxcombatHealth;
-        public int maxcombatMana;
 
         public Enemy enemy;
         public Weapon weapon;
@@ -53,102 +54,114 @@ namespace Game.Entity
             this.armor = armor;
             this.weapon = weapon;
             this.accessory = accessory;
+
             Level = 1;
             LevelCup = 1;
             Experience = 0;
             MaxExperience = 500;
-            EXtoNextLevel = MaxExperience - Experience;
-            CriticalChance = Agility * 0.005;
+            CriticalChance = Agility * 0.1;
+
             purchases = 0;
             sales = 0;
             wins = 0;
             losses = 0;
             defence = false;
-            MaxHealth = Endurance * 5;
+
+            if (this.armor == null)
+            {
+                MaxHealth = Endurance * 5;
+            }
+            else
+            {
+                MaxHealth = Endurance * 5 + armor.DefenseBonusArmor;
+            }
+            if (this.accessory == null)
+            {
+                MaxMana = Intelligence * 5;
+            }
+            else
+            {
+                MaxMana = Intelligence * 5 + accessory.ManaBonusAccessory;
+            }
             Health = MaxHealth;
-            MaxMana = Intelligence * 5;
             Mana = MaxMana;
-            combatHealth = Health + armor.DefenseBonusArmor;
-            combatMana = Mana + accessory.ManaBonusAccessory;
-            maxcombatHealth = combatHealth;
-            maxcombatMana = combatMana;
 
         }
         public void UpdateStats()
         {
-            CriticalChance = Agility * 0.005;
-            MaxHealth = Endurance * 5;
-            Health = MaxHealth;
-            MaxMana = Intelligence * 5;
-            Mana = MaxMana;
-            combatHealth = Health + armor.DefenseBonusArmor;
-            combatMana = Mana + accessory.ManaBonusAccessory;
-            maxcombatHealth = combatHealth;
-            maxcombatMana = combatMana;
+            CriticalChance = Agility * 0.1;
+            if (this.armor == null)
+            {
+                MaxHealth = Endurance * 5;
+            }
+            else
+            {
+                MaxHealth = Endurance * 5 + armor.DefenseBonusArmor;
+            }
+            if (this.accessory == null)
+            {
+                MaxMana = Intelligence * 5;
+            }
+            else
+            {
+                MaxMana = Intelligence * 5 + accessory.ManaBonusAccessory;
+            }
         }
-        public void PlayerAttack(Enemy enemy)
+        public void PlayerAttack(Enemy enemy, int minusMana, int number)
         {
-            combatMana -= 10;
+            Mana -= minusMana;
             Random random = new Random();
             damage = Strength;
 
             if (this.weapon != null)
                 damage += this.weapon.AttackBonusWeapon;
 
-            if (random.Next(100) >= CriticalChance)
+            if (random.Next(100) < CriticalChance)
             {
                 damage *= 3;
             }
-            enemy.Health -= damage;
-        }
-        public void PlayerPowerAttack(Enemy enemy)
-        {
-            combatMana -= 20;
-            Random random = new Random();
-            damage = Strength * 2;
-
-            if (this.weapon != null)
-                damage += this.weapon.AttackBonusWeapon;
-            
-            if (random.Next(100) >= CriticalChance)
-            {
-                damage *= 3;
-            }
+            damage = damage * number;
             enemy.Health -= damage;
         }
         public void PlayerHeal()
         {
-            combatMana -= 10;
-            combatHealth = maxcombatHealth;
+            Mana -= 10;
+            Health = MaxHealth;
             MessageBox.Show("Гравець лікувався.");
         }
         public void PlayerDefence()
         {
-            combatMana -= 5;
+            Mana -= 5;
             defence = true;
             MessageBox.Show("Гравець обороняється.");
         }
-        public void AddExperience(int amount)
+        public void PlayerMeditation()
         {
-            Experience += amount;
-            while (Experience >= EXtoNextLevel)
+            Mana = MaxMana;
+            MessageBox.Show("Гравець медитує.");
+        }
+        public void AddExperience(int amountEXP)
+        {
+            amount = amountEXP;
+            while (amount >= MaxExperience - Experience)
             {
-                Experience -= EXtoNextLevel;
+                amount -= (MaxExperience - Experience);
                 LevelUp();
             }
+            Experience = amount;
         }
         public void LevelUp()
         {
             Level += 1;
             Strength += 2;
-            Endurance += 1;
-            Intelligence += 1;
-            MaxHealth += 20;
-            Health = MaxHealth;
-            MaxMana += 20;
-            Mana = MaxMana;
+            Endurance += 3;
+            Intelligence += 4;
+            Agility += 3;
             MaxExperience *= 2;
-            EXtoNextLevel = MaxExperience - Experience;
+            UpdateStats();
+            Health = MaxHealth;
+            Mana = MaxMana;
+            UpdateStats();
             MessageBox.Show("Рівень підвищено! Тепер рівень " + Level);
         }
     }

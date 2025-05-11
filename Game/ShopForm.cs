@@ -28,19 +28,23 @@ namespace Game
             label8.Text = player.Gold.ToString();
             UpdateItem();
         }
-        private void button1_Click(object sender, EventArgs e)
+        public void button1_Click(object sender, EventArgs e)
         {
             ShopItemGenerator shopItemGenerator = new ShopItemGenerator(player);
             shopItemGenerator.BuyItem(number, comboBox1.SelectedIndex + 1);
-            this.Hide();
+            this.Close();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        public void button2_Click(object sender, EventArgs e)
         {
             ShopItemGenerator shopItemGenerator = new ShopItemGenerator(player);
             shopItemGenerator.SellItem(number);
             label8.Text = player.Gold.ToString();
             UpdateItem();
+        }
+        public void button3_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
         public void UpdateItem()
         {
@@ -154,11 +158,6 @@ namespace Game
                 }
 
             }
-        private void button3_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-        }
-
         private void comboBox1_SelectedIndexChanged_1(object sender, EventArgs e)
         {
             switch (comboBox1.SelectedIndex + 1)
